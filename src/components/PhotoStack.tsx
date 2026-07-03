@@ -1,11 +1,8 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import PixelSprite from "./PixelSprite";
 import { MONTHS, HEART, HEART_PAL, isVideo, type MonthEntry } from "../data";
 
 type StackItem = MonthEntry & { kind?: "note" };
-
-const MUSIC_SRC =
-  "/Chik%C3%A9%20%26%20Simi%20%20Running%20(To%20You)%20%5BOfficial%20Audio%5D.mp3";
 
 function CardMedia({ m, noteText }: { m: StackItem; noteText: string }) {
   if (m.kind === "note") {
@@ -72,7 +69,6 @@ function Card({
 
 export default function PhotoStack() {
   const [current, setCurrent] = useState(0);
-  const audioRef = useRef<HTMLAudioElement>(null);
   const noteText =
     "Happy Anniversary my solomon 4:7 princess. I am so happy to reach this milestone with you especially after all that we have overcome together. I thank God for bringing us this far and I thank you for all that you've been in my life. Your presence has uplifted me and pushed me to become better. I pray we continue to reach many milestones together. I love you";
   const items: StackItem[] = [
@@ -87,30 +83,6 @@ export default function PhotoStack() {
   );
 
   useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    audio.volume = 0.55;
-
-    const playMusic = () => {
-      void audio.play().catch(() => {
-        // Browser autoplay rules can require a click or key press first.
-      });
-    };
-
-    playMusic();
-    window.addEventListener("pointerdown", playMusic, { once: true });
-    window.addEventListener("keydown", playMusic, { once: true });
-
-    return () => {
-      window.removeEventListener("pointerdown", playMusic);
-      window.removeEventListener("keydown", playMusic);
-      audio.pause();
-      audio.currentTime = 0;
-    };
-  }, []);
-
-  useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") go(-1);
       if (e.key === "ArrowRight") go(1);
@@ -123,7 +95,6 @@ export default function PhotoStack() {
 
   return (
     <section className="page">
-      <audio ref={audioRef} src={MUSIC_SRC} loop preload="auto" />
       <div className="stack-wrap">
         <button
           className={`arrow ${current === 0 ? "hidden" : ""}`}
