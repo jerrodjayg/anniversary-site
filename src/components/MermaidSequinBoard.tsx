@@ -29,9 +29,9 @@ const DEFAULT_PINK = ["#F4C0D1", "#ED93B1", "#D4537E", "#F7D3E0", "#E274A0"];
 const DEFAULT_ORANGE = ["#FAC775", "#EF9F27", "#BA7517", "#FBDCA0", "#D68A1A"];
 
 export default function MermaidSequinBoard({
-  width = 720,
-  height = 430,
-  cellSize = 16,
+  width = 660,
+  height = 310,
+  cellSize = 14,
   pinkShades = DEFAULT_PINK,
   orangeShades = DEFAULT_ORANGE,
   className = "",
@@ -226,7 +226,7 @@ export default function MermaidSequinBoard({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        gap: 12,
+        gap: 10,
         ...style,
       }}
     >
@@ -274,24 +274,24 @@ function modeButtonStyle(active: boolean): CSSProperties {
     display: "flex",
     alignItems: "center",
     gap: 6,
-    padding: "10px 16px",
-    minHeight: 44,
+    padding: "8px 14px",
+    minHeight: 38,
     borderRadius: 8,
     border: active ? "1px solid #d4537e" : "1px solid #ddd",
     background: active ? "#fbeaf0" : "#fff",
     color: active ? "#72243e" : "#333",
-    fontSize: 14,
+    fontSize: 13,
     cursor: "pointer",
   };
 }
 
 const resetButtonStyle: CSSProperties = {
-  padding: "8px 14px",
-  minHeight: 40,
+  padding: "7px 12px",
+  minHeight: 36,
   borderRadius: 8,
   border: "1px solid #ddd",
   background: "#fff",
   color: "#333",
-  fontSize: 13,
+  fontSize: 12,
   cursor: "pointer",
 };
