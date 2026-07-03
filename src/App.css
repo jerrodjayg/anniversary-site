@@ -47,7 +47,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  transform: translateX(-28px);
+  transform: translateX(-44px) scale(0.94);
+  transform-origin: top center;
 }
 header {
   width: 100%;
