@@ -8,22 +8,22 @@ body {
   height: 100%;
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 body {
   margin: 0;
   font-family: "VT323", monospace;
   color: #264a63;
   background: linear-gradient(180deg, #bfe8ff 0%, #8ecdf5 100%);
-  overflow-x: hidden;
+  overflow: hidden;
   overscroll-behavior-x: none;
   touch-action: pan-y;
   image-rendering: pixelated;
   -webkit-font-smoothing: none;
 }
 #root {
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
 }
