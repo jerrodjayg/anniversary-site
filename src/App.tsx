@@ -1,9 +1,9 @@
 import { useState } from "react";
-import ReactAudioPlayer from "react-audio-player";
 import Sky from "./components/Sky";
 import PhotoStack from "./components/PhotoStack";
 import FlowerMessage from "./components/FlowerMessage";
 import MermaidSequinBoard from "./components/MermaidSequinBoard";
+import AutoMusic from "./components/AutoMusic";
 import "./App.css";
 
 type Tab = "months" | "flower" | "board";
@@ -21,9 +21,7 @@ export default function App() {
   return (
     <>
       <Sky />
-      {tab === "months" && (
-        <ReactAudioPlayer src={MUSIC_SRC} autoPlay loop volume={0.55} />
-      )}
+      {tab === "months" && <AutoMusic src={MUSIC_SRC} volume={0.55} />}
       <div id="app">
         <header>
           <h1>Happy Anniversary ♡</h1>
