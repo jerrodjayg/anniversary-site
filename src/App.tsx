@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import ReactAudioPlayer from "react-audio-player";
 import Sky from "./components/Sky";
 import PhotoStack from "./components/PhotoStack";
 import FlowerMessage from "./components/FlowerMessage";
@@ -12,46 +13,17 @@ const MUSIC_SRC =
 
 export default function App() {
   const [tab, setTab] = useState<Tab>("months");
-  const audioRef = useRef<HTMLAudioElement>(null);
-
-  const playMonthsMusic = () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    audio.volume = 0.55;
-    void audio.play().catch(() => {
-      // Some browsers require the first click or key press before audio can play.
-    });
-  };
-
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    if (tab === "months") {
-      playMonthsMusic();
-      window.addEventListener("pointerdown", playMonthsMusic, { once: true });
-      window.addEventListener("keydown", playMonthsMusic, { once: true });
-    } else {
-      audio.pause();
-    }
-
-    return () => {
-      window.removeEventListener("pointerdown", playMonthsMusic);
-      window.removeEventListener("keydown", playMonthsMusic);
-    };
-  }, [tab]);
 
   function showTab(nextTab: Tab) {
     setTab(nextTab);
-    if (nextTab === "months") {
-      playMonthsMusic();
-    }
   }
 
   return (
     <>
       <Sky />
-      <audio ref={audioRef} src={MUSIC_SRC} loop preload="auto" />
+      {tab === "months" && (
+        <ReactAudioPlayer src={MUSIC_SRC} autoPlay loop volume={0.55} />
+      )}
       <div id="app">
         <header>
           <h1>Happy Anniversary ♡</h1>
